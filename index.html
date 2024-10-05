@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>COLORON BET</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700,900'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="splash"></div>
+<div class="container">
+    <div class="start-game game-full-flex" id="start-game">
+        <div class="start-game-top">
+            <a class="play-full-page" target="_blank">Modo de Tela Cheia</a>
+        </div>    
+        <div class="logo-holder">
+            <p class="logo">
+                <span>C</span>
+                <span>o</span>
+                <span>l</span>
+                <span>o</span>
+                <span>r</span>
+                <span>o</span>
+                <span>n</span>
+            </p>
+            <a class="play-button" href="#" onclick="startGame()">Jogar</a>
+            <h4 class="hint">dica: <span>a cor vermelha</span> sempre vem primeiro</h4>
+        </div>
+        
+        <!-- Caixa de texto para o valor da aposta -->
+        <div class="aposta-container-unico">
+            <label for="betAmount" class="aposta-label-unico">Digite o valor da aposta (mínimo R$ 2,00):</label>
+            <input type="number" id="betAmount" class="aposta-input-unico" placeholder="Valor da aposta" min="2" step="1">
+        </div>
+
+        <div class="how-to-play">
+            <div class="section section-1">
+                <h4>Bola quicando<br>muda de cor</h4>
+                <div class="content">
+                    <div class="ball-demo" id="ball-demo"></div>
+                </div>
+            </div>
+            <div class="section section-2">
+                <h4>Toque na barra para mudar as cores<br>(Vermelho, Amarelo, Roxo)</h4>
+                <div class="content">
+                    <div class="bar bar-1" data-index="0"></div>
+                    <div class="bar bar-2"></div>
+                    <div class="bar bar-3"></div>
+                </div>
+            </div>
+            <div class="section section-3">
+                <h4>Sempre combine as<br>cores da bola e da barra</h4>
+                <div class="content">
+                    <div class="ball-demo" id="ball-demo"></div>
+                    <div class="bar bar-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stop-game game-full-flex">
+        <div class="score-container">
+            <h1>Coloron</h1>
+            <div class="final-score"></div>
+            <div class="result"></div>
+            <h4>entre no meu grupo do telegram</h4>
+            <p>
+                <a class="telegram" href="#" onclick="game.generateTelegramMessage()">
+                    <i class="fa fa-telegram" aria-hidden="true"></i> telegram
+                </a>
+            </p>
+            <div>
+                <a class="main-menu" href="#" onclick="game.intro()">Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="small-glows"></div>
+    <div class="glow"><div class="sun"></div></div>
+    <div class="waves">
+        <div class="top_wave"></div>
+        <div class="wave1"></div>
+        <div class="wave2"></div>
+        <div class="wave3"></div>
+        <div class="wave4"></div>
+    </div>
+    <div class="mounts">
+        <div class="mount1"></div>
+        <div class="mount2"></div>
+    </div>
+    <div class="clouds"></div>
+    <div class="scene">
+        <div class="learn-to-play">Clique nas barras para mudar a cor!</div>
+        <div class="score" id="score"></div>
+        <div class="ball-holder"></div>
+        <div class="sticks" id="sticks"></div>
+    </div>
+    <div class="noise"></div>
+</div>
+
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src="./script.js"></script>
+<script>
+    function startGame() {
+        var betAmount = parseFloat(document.getElementById('betAmount').value);
+        
+        // Verifica se o valor da aposta é válido
+        if (!isNaN(betAmount) && betAmount >= 2 && Number.isInteger(betAmount)) {
+            game.start(betAmount); // Passa o valor da aposta para o método start
+        } else {
+            alert("Por favor, insira um valor inteiro igual ou maior que R$ 2,00.");
+        }
+    }
+</script>
+</body>
+</html>
